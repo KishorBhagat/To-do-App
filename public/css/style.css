@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&family=Roboto:wght@300;400;500;700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #7b92ce;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header{
+    width: 50vw;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    /* position: fixed; */
+    top: 0;
+    margin-top: 10px;
+    z-index: 1;
+    background-color: inherit;
+    /* height: 10%; */
+}
+.header h1{
+    display: inline;
+}
+.header h1 a{
+    text-decoration: none;
+    color: #fff;
+}
+.taskContainer{
+    background: rgba(255, 255, 255, 0.27);
+    border-radius: 3px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.47);
+    height: 81vh;
+    width: 50vw;
+    padding: 10px;
+    overflow-y: scroll;
+}
+.taskContainer::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+.taskContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+.taskContainer::-webkit-scrollbar-thumb {
+    background: rgb(89, 122, 211);
+    border-radius: 10px;
+}
+
+.task {
+    background-color: #fff;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 0 10px;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.task input {
+    margin-right: 10px;
+}
+
+.fa-trash-can{
+    color: red;
+    cursor: pointer;
+}
+.fa-pen-to-square{
+    color: green;
+    margin-right: 20px;
+}
+.inputBox{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    bottom: 15px;
+    width: fit-content;
+    background-color: #3c5fbc;
+    border-radius: 4px;
+    width: 50vw;
+}
+
+.addBtn{
+    border: none;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    font-weight: 200;
+    color: #fff;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.inputBox input{
+    border: none;
+    font-size: 20px;
+    font-weight: 200;
+    background: transparent;
+    caret-color: white;
+    color: white;
+    margin-left: 15px;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+}
+
+.inputBox input:focus{
+    outline: none;
+    border-bottom: 2px solid #0c3093;
+}
+.inputBox input::placeholder{
+    color: white;
+}
+.todoForm{
+    width: 100%;
+}
+input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    top: 3px;
+    position: relative;
+}
+
+
+
+
+.renameBox{
+    position: absolute;
+    z-index: 5;
+    background-color: #fff;
+    border: 1px solid #3c5fbc;
+    width: 400px;
+    height: 200px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 35%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.renameForm{
+    width: 100%;
+    text-align: center;
+}
+.renameForm input{
+    width: 90%;
+    height: 35px;
+    background-color: #dedede;
+    border: none;
+    border-bottom: 2px solid #3c5fbc;
+    padding: 10px;
+    caret-color: #3c5fbc;
+
+}
+.renameForm h3{
+    font-weight: 500;
+    margin-bottom: 20px;
+    
+}
+.renameForm input:focus{
+    outline: none;
+}
+.renameOptions{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.renameForm button{
+    border: none;
+    background-color: #fff;
+    color: #3c5fbc;
+    margin: 20px 5% 0 5%;
+    font-weight: 600;
+}
+
+
+
+@media(width <= 600px){
+    .taskContainer{
+        padding: 5px; 
+        width: 98vw;
+        height: 83vh;
+    }
+    .header{
+        width: 100vw;
+        font-size: 10px;
+        padding: 0 10px;
+
+    }
+    .inputBox{
+        width: 98vw;
+    }
+}
+
+@media(600px < width < 1000px){
+    .taskContainer{
+        width: 70vw;
+    }
+    .header{
+        width: 70vw;
+    }
+    .inputBox{
+        width: 70vw;
+    }
+}
+
+.container{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-box{
+    width: 360px;
+    height: 460px;
+    background-color: white;
+    border-radius: 3px;
+    margin-top: 80px;
+}
+.login-box{
+    width: 360px;
+    height: 360px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: #fff;
+    margin-top: 100px;
+}
+#forgot{
+    text-decoration: none;
+    color: #103eb6;
+}
+.signup-box h1, .login-box h1{
+    text-align: center;
+    padding-top: 15px;
+}
+.signup-box h4, .login-box h4{
+    text-align: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    outline: none;
+}
+.form span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form label{
+    font-size: 18px;
+}
+.form input{
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+
+input[type="submit"]{
+    width: 100%;
+    height: 35px;
+    border: none;
+    background-color: #3c5fbc;
+    color: white;
+    font-size: 18px;
+}
+
+p{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+}
+
+.para-2{
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    margin-top: -10px;
+}
+
+.para-2 a{
+    color: #103eb6;
+} 
