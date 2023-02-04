@@ -30,9 +30,8 @@ body {
 .header h1{
     display: inline;
 }
-.header h1 a{
-    text-decoration: none;
-    color: #fff;
+.logout{
+    cursor: pointer;
 }
 .taskContainer{
     background: rgba(255, 255, 255, 0.27);
@@ -47,11 +46,11 @@ body {
     overflow-y: scroll;
 }
 .taskContainer::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
+    width: 5px;
+    height: 5px;
 }
 .taskContainer::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: rgba(255, 255, 255, 0.17);
   }
 .taskContainer::-webkit-scrollbar-thumb {
     background: rgb(89, 122, 211);
@@ -234,14 +233,14 @@ input[type="checkbox"]{
 
 .signup-box{
     width: 360px;
-    height: 460px;
+    height: fit-content;
     background-color: white;
     border-radius: 3px;
     margin-top: 80px;
 }
 .login-box{
     width: 360px;
-    height: 360px;
+    height: fit-content;
     margin: auto;
     border-radius: 3px;
     background-color: #fff;
@@ -250,6 +249,9 @@ input[type="checkbox"]{
 #forgot{
     text-decoration: none;
     color: #103eb6;
+}
+#forgot:hover{
+    text-decoration: underline;
 }
 .signup-box h1, .login-box h1{
     text-align: center;
@@ -287,16 +289,19 @@ input[type="checkbox"]{
 
 input[type="submit"]{
     width: 100%;
-    height: 35px;
     border: none;
     background-color: #3c5fbc;
     color: white;
     font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 p{
-    text-align: center;
-    padding-top: 20px;
+    /* text-align: center; */
     font-size: 15px;
 }
 
@@ -305,6 +310,7 @@ p{
     color: white;
     font-size: 15px;
     margin-top: -10px;
+    padding-top: 20px;
 }
 
 .para-2 a{

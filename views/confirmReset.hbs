@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1>Reset your password</h1>
+            <p></p>
+            <form id="confirmation-form" class="form" method="POST">
+                <span>
+                    <label>Enter your registered email</label>
+                    <input type="email" name="email" required>
+                </span>
+                <p>A verification code will be sent to this email address.</p><br>
+                <input type="submit" value="Send Code">
+                {{!-- <input type="submit" value="Cancel"> --}}
+            </form>
+        </div>
+        <p class="para-2">Go back to <a href="/login">Login</a> page.</p>
+
+    </div>
+
+    <script src="js/passwordResetConfirmation.js"></script>
+
+</body>
+
+</html>

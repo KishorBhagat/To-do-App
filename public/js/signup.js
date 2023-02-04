@@ -24,7 +24,7 @@ signupForm.addEventListener('submit', (e)=>{
     e.preventDefault();
     const formData = new FormData(signupForm);
     const data = Object.fromEntries(formData);
-    // console.log(data);
+    console.log(data);
     
     const signup = async ()=>{
         try {
@@ -37,6 +37,8 @@ signupForm.addEventListener('submit', (e)=>{
             });
             if(response.ok){
                 const userData = await response.json();
+                alert("A verification mail is send to your email. Please check your email.");
+
                 window.location.replace('/login');
             }
             else{

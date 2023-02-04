@@ -3,6 +3,7 @@ const logout = document.querySelector('.logout');
 
 logout.addEventListener('click', (e) => {
     localStorage.removeItem('auth-token');
+    window.location.replace('/login');
 });
 
 
@@ -121,10 +122,10 @@ const showTasks = async () => {
                         html += `
                         <div class="task">
                             <span>
-                                ${data[idx].task}
+                                ${element.task}
                             </span>
-                            <span><i class="fa-solid fa-pen-to-square" onclick=renameTask("${data[idx]._id}")></i>
-                                <i class="fa-solid fa-trash-can" onclick=deleteTask("${data[idx]._id}")></i>
+                            <span><i class="fa-solid fa-pen-to-square" onclick=renameTask("${element._id}")></i>
+                                <i class="fa-solid fa-trash-can" onclick=deleteTask("${element._id}")></i>
                             </span>
                         </div>
                         `;
