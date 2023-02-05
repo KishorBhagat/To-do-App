@@ -1,30 +1,6 @@
 const resetPasswordForm = document.querySelector("#reset-password-form");
+const message = document.querySelector("#message");
 
-const update = async (reqObj)=>{
-    try {
-
-        const response = await fetch('http://localhost:5000/api/auth/updatePassword', {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(reqObj)
-        });
-        const userResponse = await response.json();
-        localStorage.removeItem("resetToken");
-        // console.log(userResponse);
-        alert(userResponse.message)
-        if(userResponse.status === "SUCCESS"){
-            window.location.replace('/login');
-        }
-        // else{
-        //     console.log("Something went wrong");
-        // }
-    } catch (error) {
-        console.log(error);
-    }
-    
-}
 
 resetPasswordForm.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -33,10 +9,36 @@ resetPasswordForm.addEventListener('submit', (e)=>{
     if(resetToken){
         const formData = new FormData(resetPasswordForm);
         const data = Object.fromEntries(formData);
-        const id = JSON.parse(atob(resetToken.split('.')[1])).user.id;
-        const reqObj = {id: id, newpassword: data.newpassword};
 
-        update(reqObj);
+        const update = async ()=>{
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/updatePassword', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'resetToken': resetToken
+                    },
+                    body: JSON.stringify(data)
+                });
+                const userResponse = await response.json();
+                message.innerHTML = userResponse.message;
+                if(userResponse.status === "SUCCESS"){
+                    alert(userResponse.message)
+                    localStorage.removeItem("resetToken"); 
+                    window.location.replace('/login');
+                }
+                if(userResponse.status === "FAILED"){
+                    message.style.color = 'red';
+                }
+                // else{
+                //     console.log("Something went wrong");
+                // }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        update();
 
     } 
     else{

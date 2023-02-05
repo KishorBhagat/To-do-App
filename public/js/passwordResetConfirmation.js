@@ -1,4 +1,3 @@
-console.log('script loaded');
 const confirmForm = document.querySelector("#confirmation-form");
 
 confirmForm.addEventListener('submit', (e)=>{

@@ -14,6 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .header{
     width: 50vw;
     color: white;
@@ -143,7 +144,6 @@ input[type="checkbox"]{
 
 
 
-
 .renameBox{
     position: absolute;
     z-index: 5;
@@ -194,36 +194,6 @@ input[type="checkbox"]{
 }
 
 
-
-@media(width <= 600px){
-    .taskContainer{
-        padding: 5px; 
-        width: 98vw;
-        height: 83vh;
-    }
-    .header{
-        width: 100vw;
-        font-size: 10px;
-        padding: 0 10px;
-
-    }
-    .inputBox{
-        width: 98vw;
-    }
-}
-
-@media(600px < width < 1000px){
-    .taskContainer{
-        width: 70vw;
-    }
-    .header{
-        width: 70vw;
-    }
-    .inputBox{
-        width: 70vw;
-    }
-}
-
 .container{
     flex-direction: column;
     display: flex;
@@ -236,7 +206,7 @@ input[type="checkbox"]{
     height: fit-content;
     background-color: white;
     border-radius: 3px;
-    margin-top: 80px;
+    margin-top: 100px;
 }
 .login-box{
     width: 360px;
@@ -244,7 +214,7 @@ input[type="checkbox"]{
     margin: auto;
     border-radius: 3px;
     background-color: #fff;
-    margin-top: 100px;
+    margin-top: 150px;
 }
 #forgot{
     text-decoration: none;
@@ -298,11 +268,22 @@ input[type="submit"]{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: all 0.2s;
+}
+input[type="submit"]:hover{
+    opacity: 0.8;
+}
+input[type="submit"]:active{
+    opacity: 1;
 }
 
 p{
     /* text-align: center; */
     font-size: 15px;
+}
+
+#message{
+    margin-top: 10px;
 }
 
 .para-2{
@@ -316,3 +297,45 @@ p{
 .para-2 a{
     color: #103eb6;
 } 
+
+
+@media(width <= 600px){
+    .taskContainer{
+        padding: 5px; 
+        width: 98vw;
+        height: 83vh;
+    }
+    .header{
+        width: 100vw;
+        font-size: 10px;
+        padding: 0 10px;
+
+    }
+    .inputBox{
+        width: 98vw;
+    }
+    .signup-box{
+        width: 320px;
+    }
+    .login-box{
+        width: 320px;
+    }
+}
+
+@media(600px < width < 1000px){
+    .taskContainer{
+        width: 70vw;
+    }
+    .header{
+        width: 70vw;
+    }
+    .inputBox{
+        width: 70vw;
+    }
+}
+
+
+/* body .forms{
+    height: 100vh;
+    display: flex;
+} */

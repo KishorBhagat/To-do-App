@@ -4,8 +4,8 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const {requireAuth} = require('../middleware/authMiddleware');
-
+// const {requireAuth} = require('../middleware/authMiddleware');
+// const fetchAuthToken = require('../middleware/fetchAuthToken');
 
 app.use('/static', express.static(path.join(__dirname, "../public")));
 app.use('/css', express.static(path.join(__dirname, "../public/css")));

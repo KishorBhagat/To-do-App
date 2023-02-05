@@ -1,4 +1,5 @@
 const signupForm = document.querySelector("#signup-form");
+const message = document.querySelector("#message");
  
 // signupForm.addEventListener('submit', (e)=>{
 //     e.preventDefault();
@@ -35,14 +36,15 @@ signupForm.addEventListener('submit', (e)=>{
                 },
                 body: JSON.stringify(data)
             });
+            const userData = await response.json();
             if(response.ok){
-                const userData = await response.json();
                 alert("A verification mail is send to your email. Please check your email.");
-
                 window.location.replace('/login');
             }
             else{
-                // alert("Invalid Credentials");
+                // alert(userData.message);
+                message.innerHTML = userData.message;
+                message.style.color = 'red';
             }
         } catch (error) {
             console.log(error);

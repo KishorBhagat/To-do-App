@@ -1,4 +1,5 @@
 const loginForm = document.querySelector("#login-form");
+const message = document.querySelector("#message");
 
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -15,13 +16,15 @@ loginForm.addEventListener('submit', (e) => {
                 body: JSON.stringify(data)
             });
             // console.log(response);
+            const userData = await response.json();
             if(response.ok){
-                const userData = await response.json();
                 localStorage.setItem("auth-token", userData.token);
                 window.location.replace('/todo');
             }
             else{
-                alert("Invalid Credentials");
+                alert(userData.message);
+                // message.innerHTML = userData.message;
+                // message.style.color = 'red';
             }
             
         } catch (error) {

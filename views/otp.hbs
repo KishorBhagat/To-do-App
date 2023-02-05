@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To-do App</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -14,12 +14,13 @@
         <div class="login-box">
             <h1>Enter security code</h1>
             <form id="otp-form" class="form" method="POST">
+                <p>Your code is sent to: <span id="email"></span></p>
                 <span>
-                    <label>Enter OTP sent to your email</label>
+                    <label>Enter code</label>
                     <input type="text" name="resetCode" required>
-                <p id="message"></p>
+                    <p id="message"></p>
                 </span>
-                <input type="submit" value="Submit">
+                <input id="resendBtn" type="submit" value="Submit">
             </form>
         </div>
     </div>
