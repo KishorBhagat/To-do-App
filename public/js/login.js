@@ -5,6 +5,7 @@ loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(loginForm);
     const data = Object.fromEntries(formData);
+    // console.log(data);
 
     const fetchUser = async () => {
         try {
@@ -13,12 +14,15 @@ loginForm.addEventListener('submit', (e) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: "include",
+                withCredentials: true,
                 body: JSON.stringify(data)
             });
             // console.log(response);
             const userData = await response.json();
             if(response.ok){
-                localStorage.setItem("auth-token", userData.token);
+                // console.log(userData);
+                localStorage.setItem("authToken", userData.token);
                 window.location.replace('/todo');
             }
             else{

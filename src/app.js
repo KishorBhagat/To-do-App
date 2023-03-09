@@ -3,9 +3,12 @@ const hbs = require('hbs');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
+const cookieParser = require("cookie-parser");
+const dotenv = require('dotenv');
 
-// const {requireAuth} = require('../middleware/authMiddleware');
-// const fetchAuthToken = require('../middleware/fetchAuthToken');
+dotenv.config();
+
+const {requireAuth} = require('../middleware/authMiddleware');
 
 app.use('/static', express.static(path.join(__dirname, "../public")));
 app.use('/css', express.static(path.join(__dirname, "../public/css")));
@@ -17,9 +20,10 @@ hbs.registerPartials(path.join(__dirname, '../partials'));
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(cookieParser());
 
-app.get('/', (req, res) => {
-    res.render('login');
+app.get('/', requireAuth, (req, res) => {
+    res.render('todo');
 });
 
 app.get('/signup', (req, res) => {
@@ -30,7 +34,7 @@ app.get('/login', (req, res) => {
     res.render("login");
 });
 
-app.get('/todo', (req, res) => {
+app.get('/todo', requireAuth, (req, res) => {
     res.render('todo');
 });
 
@@ -45,6 +49,11 @@ app.get('/code', (req, res) => {
 app.get('/resetPassword', (req, res) => {
     res.render('resetPassword');
 });
+
+app.get('/logout', (req, res)=> {
+    res.cookie('authToken', '', {maxAge: 1});
+    res.redirect('/login');
+})
 
 app.listen(port, ()=>{
     console.log("Server listening at port "+ port);

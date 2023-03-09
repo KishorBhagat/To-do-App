@@ -1,17 +1,20 @@
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: '../.env' });
 
 const requireAuth = (req, res, next) => {
 
-    const authToken = localStorage.getItem('auth-token');
+    let token = req.cookies.authToken;
 
-    if (authToken) {
+    if (token) {
         jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
             if (err) {
-                console.log(err.message);
+                // console.log(err.message);
                 res.redirect('/login');
             }
             else {
-                console.log(decodedToken);
+                // console.log(decodedToken);
                 next();
             }
         });
@@ -21,13 +24,5 @@ const requireAuth = (req, res, next) => {
     }
 
 }
-// const requireAuth = (req, res, next) => {
-
-//     // const authToken = localStorage.getItem('auth-token');
-    
-//     alert("middleware called");
-//     next();
-
-// }
 
 module.exports = { requireAuth };

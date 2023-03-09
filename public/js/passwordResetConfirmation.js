@@ -17,7 +17,8 @@ confirmForm.addEventListener('submit', (e)=>{
             if(response.ok){
                 const userData = await response.json();
                 localStorage.setItem("resetToken", userData.token);
-                alert("A security code is send to your email. Please check your email.");
+                // alert("A security code is send to your email. Please check your email.");
+                alert(userData.message);
                 window.location.replace('/code');
             }
             // else{

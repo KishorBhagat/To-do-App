@@ -32,6 +32,8 @@ body {
     display: inline;
 }
 .logout{
+    text-decoration: none;
+    color: inherit;
     cursor: pointer;
 }
 .taskContainer{

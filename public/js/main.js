@@ -1,9 +1,22 @@
+const authToken = localStorage.getItem('authToken');
+
 // LOGOUT ACTION
 const logout = document.querySelector('.logout');
 
 logout.addEventListener('click', (e) => {
-    localStorage.removeItem('auth-token');
+    localStorage.removeItem('authToken');
     window.location.replace('/login');
+
+    const logoutUser = async ()=> {
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/logout', {
+                method: 'GET'
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    logoutUser();
 });
 
 
@@ -16,14 +29,14 @@ todoForm.addEventListener('submit', (e) => {
     const formData = new FormData(todoForm);
     const data = Object.fromEntries(formData);
     // console.log(JSON.stringify(data));
-    const authToken = localStorage.getItem('auth-token');
+    // const authToken = localStorage.getItem('authToken');
     const addTask = async () => {
         try {
             const response = await fetch('http://localhost:5000/api/task/addtask', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'auth-token': authToken
+                    'authToken': authToken
                 },
                 body: JSON.stringify(data)
             });
@@ -41,13 +54,13 @@ todoForm.addEventListener('submit', (e) => {
 
 // DELETE A TASK FROM DATABASE AND DISPLAY UPDATED TASKS IN THE APP
 const deleteTask = async (id) => {
-    const authToken = localStorage.getItem('auth-token');
+    // const authToken = localStorage.getItem('authToken');
     try {
         const response = await fetch(`http://localhost:5000/api/task/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': authToken
+                'authToken': authToken
             }
         });
         showTasks();
@@ -71,7 +84,7 @@ const renameTask = async (id) => {
         renameBox.style.display = 'none';
     });
 
-    const authToken = localStorage.getItem('auth-token');
+    // const authToken = localStorage.getItem('authToken');
     const renameForm = document.querySelector(".renameForm");
     renameForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -85,7 +98,7 @@ const renameTask = async (id) => {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
-                        'auth-token': authToken
+                        'authToken': authToken
                     },
                     body: JSON.stringify(data)
                 });
@@ -103,14 +116,14 @@ const renameTask = async (id) => {
 
 // DISPLAY ALL THE TASKS IN THE APP
 const showTasks = async () => {
-    const authToken = localStorage.getItem('auth-token');
+    // const authToken = localStorage.getItem('authToken');
     if (authToken) {
         try {
             const response = await fetch('http://localhost:5000/api/task/gettasks', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'auth-token': authToken
+                    'authToken': authToken
                 }
             });
             try {
