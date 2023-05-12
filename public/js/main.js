@@ -32,7 +32,7 @@ todoForm.addEventListener('submit', (e) => {
     // const authToken = localStorage.getItem('authToken');
     const addTask = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/task/addtask', {
+            const response = await fetch('http://localhost:5000/api/tasks', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ todoForm.addEventListener('submit', (e) => {
 const deleteTask = async (id) => {
     // const authToken = localStorage.getItem('authToken');
     try {
-        const response = await fetch(`http://localhost:5000/api/task/${id}`, {
+        const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ const renameTask = async (id) => {
 
         const updateTask = async ()=>{
             try {
-                const response = await fetch(`http://localhost:5000/api/task/${id}`, {
+                const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ const showTasks = async () => {
     // const authToken = localStorage.getItem('authToken');
     if (authToken) {
         try {
-            const response = await fetch('http://localhost:5000/api/task/gettasks', {
+            const response = await fetch('http://localhost:5000/api/tasks', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
